@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>JESUS ELISALECO | Portfolio de Diseño Industrial</title>
+    <!-- Tailwind CSS loaded to fulfill the 1:1 precision mapping from Stitch -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght@100..700,FILL@0..1,GRAD@0,opsz@24&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body class="bg-white text-[#1b1c1b]">
+    <!-- TopNavBar (Floating Dock Style) -->
+    <header class="dock-header">
+        <nav class="dock-container">
+            <div class="text-lg font-black tracking-tighter text-[#1b1c1b] font-headline">
+                <a class="logo-container" href="#hero">
+                    <span class="logo-initials">J</span><span class="logo-rest">esus</span>
+                    <span class="logo-initials">E</span><span class="logo-rest">lisaleco</span>
+                </a>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="nav-link font-headline font-semibold text-[13px] tracking-tight text-[#FF4F00] transition-colors"
+                    data-key="projects" href="#projects">Proyectos</a>
+                <a class="nav-link font-headline font-semibold text-[13px] tracking-tight text-[#1b1c1b] opacity-60 hover:opacity-100 transition-all transition-colors"
+                    data-key="services" href="#services">Capacidades</a>
+                <a class="nav-link font-headline font-semibold text-[13px] tracking-tight text-[#1b1c1b] opacity-60 hover:opacity-100 transition-all transition-colors"
+                    data-key="about" href="about.html">Sobre mi</a>
+                <a class="nav-link font-headline font-semibold text-[13px] tracking-tight text-[#1b1c1b] opacity-60 hover:opacity-100 transition-all transition-colors"
+                    data-key="contact" href="#contact">Contacto</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="font-headline text-xs font-bold tracking-widest uppercase text-[#1b1c1b] opacity-40 hover:opacity-100 transition-all hover:text-[#FF4F00] group"
+                    id="language-toggle">
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-12" fill="none"
+                        stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M3 5h12M9 3v2m1.048 9.5a18.062 18.062 0 01-4.25-4.5M5.848 13.1a18.06 18.06 0 004.411-4.1M11 21l5-10 5 10m-4.5-3.5h3.5"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                    </svg>
+                </button>
+                <button
+                    class="flex items-center justify-center p-1.5 text-[#1b1c1b] opacity-40 hover:opacity-100 hover:text-[#FF4F00] transition-all"
+                    id="dark-mode-toggle" title="Toggle Theme">
+                    <svg class="w-4 h-4 transition-transform duration-500" fill="none" id="theme-svg"
+                        stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="9" stroke-width="1.5"></circle>
+                        <path d="M12 3v18M12 3a9 9 0 110 18V3z" fill="currentColor" id="theme-path" stroke-width="0">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="relative hero-full flex items-center overflow-hidden animated-hero-bg" id="hero">
+            <div class="dot-grid"></div>
+            <div class="dot-glow-cursor" id="cursor-glow"></div>
+            <div
+                class="relative z-10 max-w-7xl mx-auto px-8 w-full flex flex-col md:flex-row justify-between items-center md:items-end">
+                <div class="hero-content-wrapper py-20" id="hero-content">
+                    <h1
+                        class="font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-8 text-white drop-shadow-lg">
+                        Mi portfolio<br />
+                        <span class="text-primary text-[#FF4F00]">Jesus Elisaleco</span>
+                    </h1>
+                    <p class="font-body text-lg md:text-xl text-white/90 max-w-xl mb-0 leading-relaxed font-light drop-shadow-md"
+                        data-key="heroDesc">
+                        Explora una visión donde la precisión técnica se encuentra con la estética emocional. Diseño
+                        industrial de alto impacto.
+                    </p>
+                </div>
+                <!-- Scroll Indicator -->
+                <div class="hidden md:flex flex-col items-center gap-6 z-20 mb-4" id="scroll-indicator">
+                    <span
+                        class="font-label text-[10px] uppercase tracking-[0.4em] text-[#FF4F00] font-bold [writing-mode:vertical-lr] mb-2"
+                        data-key="scroll">Desliza</span>
+                    <div class="w-[2px] h-32 bg-white/20 relative overflow-hidden">
+                        <div
+                            class="absolute top-0 left-0 w-full h-1/2 bg-[#FF4F00] animate-[scroll-anim_2s_linear_infinite]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Metadata Strip -->
+        <section class="bg-white border-b border-black/5 py-16">
+            <div class="max-w-[1600px] mx-auto px-16">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div>
+                        <span
+                            class="font-label text-[9px] uppercase tracking-widest text-[#FF4F00] font-bold block mb-2"
+                            data-key="enfoque">Enfoque</span>
+                        <h3 class="font-headline text-lg font-semibold" data-key="di_title">Diseño Industrial</h3>
+                    </div>
+                    <div>
+                        <span
+                            class="font-label text-[9px] uppercase tracking-widest text-[#FF4F00] font-bold block mb-2"
+                            data-key="experiencia">Experiencia</span>
+                        <h3 class="font-headline text-lg font-semibold">8+ Años</h3>
+                    </div>
+                    <div>
+                        <span
+                            class="font-label text-[9px] uppercase tracking-widest text-[#FF4F00] font-bold block mb-2"
+                            data-key="reconocimiento">Reconocimiento</span>
+                        <h3 class="font-headline text-lg font-semibold">Red Dot Best 2023</h3>
+                    </div>
+                    <div>
+                        <span
+                            class="font-label text-[9px] uppercase tracking-widest text-[#FF4F00] font-bold block mb-2"
+                            data-key="base">Base</span>
+                        <h3 class="font-headline text-lg font-semibold" data-key="location">Berlín, Alemania</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Featured Projects Grid -->
+        <section class="py-24 bg-white" id="projects">
+            <div class="max-w-[1600px] mx-auto px-8 md:px-16">
+                <div class="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
+                    <div>
+                        <span
+                            class="font-label text-[10px] tracking-[0.3em] uppercase text-[#FF4F00] mb-3 block font-bold"
+                            data-key="selectedWorks">Trabajos Seleccionados</span>
+                        <h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight"
+                            data-key="portfolioTitle">Portfolio</h2>
+                    </div>
+                    <a class="font-headline text-xs font-bold uppercase tracking-widest border-b border-black pb-1 hover:text-[#FF4F00] hover:border-[#FF4F00] transition-colors"
+                        data-key="archive" href="#">Archivo / 2024</a>
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 h-[600px] w-full" id="projects-gallery">
+                    <!-- Project 1 -->
+                    <a href="project-lumix.html"
+                        class="gallery-card active relative rounded-2xl overflow-hidden cursor-pointer group flex-[5] md:flex-[5] transition-all duration-[600ms]"
+                        style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);">
+                        <img alt="Professional Camera System"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHNZPftCCF_h_NCNzJh75HCnxG_lz8HEygVl_BSe7c8BOqzt83bvnNEk_Q8h3Kq8Byj4kGsG3XhioHAzlWlWZvW5ztFzIuJOH_G3UHvy_ohVmp991R75ecADG5h0cPMBPGNqyn-QiDCHUr6MRHMGsL-PWaodl0C8ZsE6ruzx5JBk44kdF6n4zsq6xhsVuKi20GTT4D1W_a-AQFJ6uTx0DQx9X6hAhI8uYhbpwN2zF0L7XURRapC4klDNyQ-UZLrGX-fSUUdwNIYwI" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-[.active]:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 p-8 text-white w-full opacity-0 group-[.active]:opacity-100 transition-opacity duration-500 delay-100 mb-0 whitespace-nowrap overflow-hidden">
+                            <h4 class="font-headline text-3xl font-bold mb-2">Lumix Pro X</h4>
+                            <p class="font-body text-white/70 text-xs uppercase tracking-wider" data-key="ind_cat1">
+                                Ingeniería Óptica & CMF</p>
+                        </div>
+                        <div
+                            class="absolute inset-0 flex items-end justify-center pb-8 opacity-100 group-[.active]:opacity-0 transition-opacity duration-300">
+                            <h4
+                                class="font-headline text-white/50 font-bold tracking-widest uppercase [writing-mode:vertical-lr] rotate-180 mix-blend-difference">
+                                Lumix</h4>
+                        </div>
+                    </a>
+
+                    <!-- Project 2 -->
+                    <div class="gallery-card relative rounded-2xl overflow-hidden cursor-pointer group flex-[1] md:flex-[1] transition-all duration-[600ms]"
+                        style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);">
+                        <img alt="Minimal Watch"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] grayscale group-[.active]:grayscale-0"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiIjhj6hkugcNsYHRosuW7kgt1QQ3Gl-5tzXD68orFnE0FaHALrp8tppe14vziTtGpd1AqB8hKjG_GB74XXXFi5SYUljt426EwhBwxRUtkvemD61JS8CiOYD0B6GOy05Op1AOwISTuEZopcwIn88tzs8JmiRJ3aFfG_1prSKnUEvaNh9C3caOEFre79RWYJWTkb2mlijWsmIvrOyBwmDRjwyDMRjoR1olwNxS7jWzVlJqA6SwCcLYPRlkaluNgpOsVbv1A1lc3UVA" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-[.active]:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 p-8 text-white w-full opacity-0 group-[.active]:opacity-100 transition-opacity duration-500 delay-100 mb-0 whitespace-nowrap overflow-hidden">
+                            <h4 class="font-headline text-3xl font-bold mb-2">Chronos Ultra</h4>
+                            <p class="font-body text-white/70 text-xs uppercase tracking-wider" data-key="ind_cat2">
+                                Relojería Contemporánea</p>
+                        </div>
+                        <div
+                            class="absolute inset-0 flex items-end justify-center pb-8 opacity-100 group-[.active]:opacity-0 transition-opacity duration-300">
+                            <h4
+                                class="font-headline text-white/50 font-bold tracking-widest uppercase [writing-mode:vertical-lr] rotate-180 mix-blend-difference">
+                                Chronos</h4>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="gallery-card relative rounded-2xl overflow-hidden cursor-pointer group flex-[1] md:flex-[1] transition-all duration-[600ms]"
+                        style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);">
+                        <img alt="High-End Headphones"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] grayscale group-[.active]:grayscale-0"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFtYMOq4W3a1IsSfsWKUCJoYMgjmsSzkl_Zx_dEJLE3zJsU85SE1TicjzWk-k8fE5aDcL9RoL7B53bKUUhqweeVeljRhmFJYRrULrFNrYj-zExb0Ox3kcRhT097ujaIbJeLw2GiCPwSDOv6WiNq3h_cWbqHPzkpIsF-FTjdtwHJU1PxmgmLxm8THo2uc5KKXV1e-LGlJ1u_ZaKOwZHdiSqPOmKXdsDOkTulpe1aDMNOFFMl1g1t27XceKwEBRy3YQWhWc5yYIw8y0" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-[.active]:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 p-8 text-white w-full opacity-0 group-[.active]:opacity-100 transition-opacity duration-500 delay-100 mb-0 whitespace-nowrap overflow-hidden">
+                            <h4 class="font-headline text-3xl font-bold mb-2">Aural One</h4>
+                            <p class="font-body text-white/70 text-xs uppercase tracking-wider" data-key="ind_cat3">
+                                Ergonomía Acústica</p>
+                        </div>
+                        <div
+                            class="absolute inset-0 flex items-end justify-center pb-8 opacity-100 group-[.active]:opacity-0 transition-opacity duration-300">
+                            <h4
+                                class="font-headline text-white/50 font-bold tracking-widest uppercase [writing-mode:vertical-lr] rotate-180 mix-blend-difference">
+                                Aural</h4>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="gallery-card relative rounded-2xl overflow-hidden cursor-pointer group flex-[1] md:flex-[1] transition-all duration-[600ms]"
+                        style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);">
+                        <img alt="Industrial Lamp"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] grayscale group-[.active]:grayscale-0"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2CflIX5mUyf8zYf_grlKcCsoHZH4jnc8Ti4Q2_59-JnP27PTEWZCbXfbIB0xrketLg55HLHGcgy4U-yWiNPCHU8YN9ty5laVcyfsS-6Cr0GQ-SM1PWfZM1ObasoVnP0IzoNv5tKqSDM1u7DCOHLc3TpTYhlSfik_pO2J9xLdLPG4P2hxj2Sm6rJtn17hqXO31uQKr5sE2DjKtw8svyZylCEgew6sh1lISwjtN90tc-jHz0I2Wi3HC7Oij56lTW9eGb0dn8ATSAcs" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-[.active]:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 p-8 text-white w-full opacity-0 group-[.active]:opacity-100 transition-opacity duration-500 delay-100 mb-0 whitespace-nowrap overflow-hidden">
+                            <h4 class="font-headline text-3xl font-bold mb-2">Lux Desk</h4>
+                            <p class="font-body text-white/70 text-xs uppercase tracking-wider" data-key="ind_cat4">
+                                Sistemas de Iluminación</p>
+                        </div>
+                        <div
+                            class="absolute inset-0 flex items-end justify-center pb-8 opacity-100 group-[.active]:opacity-0 transition-opacity duration-300">
+                            <h4
+                                class="font-headline text-white/50 font-bold tracking-widest uppercase [writing-mode:vertical-lr] rotate-180 mix-blend-difference">
+                                Lux</h4>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="gallery-card relative rounded-2xl overflow-hidden cursor-pointer group flex-[1] md:flex-[1] transition-all duration-[600ms]"
+                        style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);">
+                        <img alt="Designer Chair"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] grayscale group-[.active]:grayscale-0"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhVpjPwN56OqI15EpTsxaI58AqKcPd2szKmTdZXrpOfpJ7cJ-hsg1NzTvSi6wbYlZxhlFiV_lJshrZ4k9KrHK_A_5Kh4L-vO2U738gipjpXKnRXTKjZOGNuuPzXa5TApUK2IZyJCOWxV-RtlzR3Rp2hC6fUVmUCAvq7q1mEWi5v6PfBOYEOQCnIv6f_mJkclk1oFfJ5ufHZVU90NwSfVGIH-uD_1MNilquc_VH31aQdBjqVHN0qxN1kDWm9RqZT71bNvQ-v_4EtOw" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-[.active]:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 p-8 text-white w-full opacity-0 group-[.active]:opacity-100 transition-opacity duration-500 delay-100 mb-0 whitespace-nowrap overflow-hidden">
+                            <h4 class="font-headline text-3xl font-bold mb-2">Aero Lounge</h4>
+                            <p class="font-body text-white/70 text-xs uppercase tracking-wider" data-key="ind_cat5">
+                                Mobiliario de Autor</p>
+                        </div>
+                        <div
+                            class="absolute inset-0 flex items-end justify-center pb-8 opacity-100 group-[.active]:opacity-0 transition-opacity duration-300">
+                            <h4
+                                class="font-headline text-white/50 font-bold tracking-widest uppercase [writing-mode:vertical-lr] rotate-180 mix-blend-difference">
+                                Aero</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Industrial Services -->
+        <section class="py-32 bg-[#fafafa]" id="services">
+            <div class="max-w-[1600px] mx-auto px-16">
+                <div class="text-center mb-24">
+                    <span class="font-label text-[10px] tracking-[0.3em] uppercase text-[#FF4F00] mb-4 block font-bold"
+                        data-key="especialidad">Especialidad</span>
+                    <h2 class="font-headline text-5xl font-bold tracking-tight" data-key="capacidades">Capacidades</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div class="bg-white p-12 border border-black/5 hover:shadow-2xl transition-all duration-500">
+                        <span class="material-symbols-outlined text-3xl text-[#FF4F00] mb-8">architecture</span>
+                        <h3 class="font-headline text-xl font-bold mb-6" data-key="di_conceptual">DI Conceptual</h3>
+                        <p class="font-body text-secondary text-sm leading-relaxed mb-8" data-key="di_desc">Visualizando
+                            la próxima generación de productos físicos con modelado de alta fidelidad.</p>
+                        <ul class="space-y-3 opacity-60">
+                            <li class="flex items-center gap-3 text-xs font-semibold list-item" data-group="list1"
+                                data-index="0">Desarrollo de Forma</li>
+                            <li class="flex items-center gap-3 text-xs font-semibold list-item" data-group="list1"
+                                data-index="1">Lenguajes de Diseño</li>
+                            <li class="flex items-center gap-3 text-xs font-semibold list-item" data-group="list1"
+                                data-index="2">Ergonomía</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-12 border border-black/5 hover:shadow-2xl transition-all duration-500">
+                        <span
+                            class="material-symbols-outlined text-3xl text-[#FF4F00] mb-8">precision_manufacturing</span>
+                        <h3 class="font-headline text-xl font-bold mb-6" data-key="cmf_title">CMF y Producción</h3>
+                        <p class="font-body text-secondary text-sm leading-relaxed mb-8" data-key="cmf_desc">Definiendo
+                            materiales y acabados que elevan la identidad y el valor de marca.</p>
+                        <ul class="space-y-3 opacity-60">
+                            <li class="flex items-center gap-3 text-xs font-semibold list-item" data-group="list2"
+                                data-index="0">Innovación en Materiales</li>
+                            <li class="flex items-center gap-3 text-xs font-semibold list-item" data-group="list2"
+                                data-index="1">Enlace de Producción</li>
+                            <li class="flex items-center gap-3 text-xs font-semibold list-item" data-group="list2"
+                                data-index="2">Prototipado</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-12 border border-black/5 hover:shadow-2xl transition-all duration-500">
+                        <span class="material-symbols-outlined text-3xl text-[#FF4F00] mb-8">view_in_ar</span>
+                        <h3 class="font-headline text-xl font-bold mb-6" data-key="digital_title">Integración Digital
+                        </h3>
+                        <p class="font-body text-secondary text-sm leading-relaxed mb-8" data-key="digital_desc">
+                            Diseñando interfaces que viven dentro de objetos físicos para experiencias fluidas.</p>
+                        <ul class="space-y-3 opacity-60">
+                            <li class="flex items-center gap-3 text-xs font-semibold list-item" data-group="list3"
+                                data-index="0">IU Embebida</li>
+                            <li class="flex items-center gap-3 text-xs font-semibold list-item" data-group="list3"
+                                data-index="1">Retroalimentación Háptica</li>
+                            <li class="flex items-center gap-3 text-xs font-semibold list-item" data-group="list3"
+                                data-index="2">Ecosistemas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section class="py-40 bg-black text-white" id="contact">
+            <div class="max-w-[1600px] mx-auto px-16 text-center">
+                <h2 class="font-headline text-6xl md:text-8xl font-bold tracking-tighter mb-16 leading-tight"
+                    data-key="ctaTitle">
+                    Construyamos <br /> el <span class="text-[#FF4F00] italic">futuro</span>.
+                </h2>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-16">
+                    <a class="font-headline text-2xl md:text-3xl font-bold hover:text-[#FF4F00] transition-colors border-b-2 border-[#FF4F00]/30"
+                        href="mailto:hola@jesuselisaleco.com">hola@jesuselisaleco.com</a>
+                    <button
+                        class="bg-[#FF4F00] text-white px-14 py-6 font-headline font-bold text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500"
+                        data-key="startProject">
+                        Iniciar Proyecto
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="w-full py-16 bg-white border-t border-black/5 relative z-50">
+        <div class="flex flex-col md:flex-row justify-between items-center px-16 max-w-[1600px] mx-auto">
+            <div class="text-lg font-black tracking-tighter text-[#1b1c1b] font-headline mb-8 md:mb-0">
+                <div class="logo-container">
+                    <span class="logo-initials">J</span><span class="logo-rest">esus</span>
+                    <span class="logo-initials">E</span><span class="logo-rest">lisaleco</span>
+                </div>
+            </div>
+            <div class="flex gap-10 mb-8 md:mb-0">
+                <a class="font-headline text-[10px] uppercase tracking-[0.2em] font-bold text-[#1b1c1b] opacity-40 hover:opacity-100 hover:text-[#FF4F00] transition-colors"
+                    href="#">Instagram</a>
+                <a class="font-headline text-[10px] uppercase tracking-[0.2em] font-bold text-[#1b1c1b] opacity-40 hover:opacity-100 hover:text-[#FF4F00] transition-colors"
+                    href="#">LinkedIn</a>
+                <a class="font-headline text-[10px] uppercase tracking-[0.2em] font-bold text-[#1b1c1b] opacity-40 hover:opacity-100 hover:text-[#FF4F00] transition-colors"
+                    href="#">Behance</a>
+            </div>
+            <p class="font-body text-[9px] uppercase tracking-widest opacity-30 font-medium" data-key="footer_copy">
+                © 2024 Jesus Elisaleco Portfolio.
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
