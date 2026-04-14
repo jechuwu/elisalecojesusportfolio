@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "switchboard": {
+      "command": "node",
+      "args": [
+        "/Users/jesuselisaleco/Desktop/Mi portfolio/.switchboard/MCP/mcp-server.js"
+      ],
+      "env": {
+        "SWITCHBOARD_WORKSPACE_ROOT": "/Users/jesuselisaleco/Desktop/Mi portfolio"
+      }
+    }
+  }
+}

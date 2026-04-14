@@ -7,7 +7,8 @@ import { useLanguage } from "./language-provider"
 import { useTheme } from "next-themes"
 import { TranslatedText } from "./translated-text"
 import { GlassFilter } from "./ui/liquid-glass-button"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
+import { EASE_OUT_EXPO, DURATION } from "@/lib/animations"
 
 export function Navbar() {
   const pathname = usePathname()
@@ -16,9 +17,10 @@ export function Navbar() {
   const [activeHash, setActiveHash] = useState("")
   const [mounted, setMounted] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
   }, [])
 
@@ -46,7 +48,7 @@ export function Navbar() {
 
   // Close mobile menu on route change
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMobileOpen(false)
   }, [pathname])
 
@@ -142,17 +144,17 @@ export function Navbar() {
               <motion.span
                 className="block h-[1.5px] bg-current origin-center"
                 animate={mobileOpen ? { rotate: 45, y: 6.5 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: shouldReduceMotion ? 0 : DURATION.normal, ease: EASE_OUT_EXPO }}
               />
               <motion.span
                 className="block h-[1.5px] bg-current"
                 animate={mobileOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: shouldReduceMotion ? 0 : DURATION.fast }}
               />
               <motion.span
                 className="block h-[1.5px] bg-current origin-center"
                 animate={mobileOpen ? { rotate: -45, y: -6.5 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: shouldReduceMotion ? 0 : DURATION.normal, ease: EASE_OUT_EXPO }}
               />
             </div>
           </button>
@@ -168,7 +170,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: shouldReduceMotion ? 0 : DURATION.normal }}
           >
             {/* Backdrop */}
             <motion.div
@@ -177,6 +179,7 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: shouldReduceMotion ? 0 : DURATION.normal }}
             />
 
             {/* Drawer panel */}
@@ -186,7 +189,7 @@ export function Navbar() {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: shouldReduceMotion ? 0 : DURATION.layout, ease: EASE_OUT_EXPO }}
             >
               {/* Nav links */}
               <div className="flex flex-col gap-2 mb-8">
@@ -200,7 +203,11 @@ export function Navbar() {
                     key={item.key}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
+                    transition={{ 
+                      duration: shouldReduceMotion ? 0 : DURATION.normal, 
+                      delay: shouldReduceMotion ? 0 : 0.1 + i * 0.05,
+                      ease: EASE_OUT_EXPO 
+                    }}
                   >
                     <Link
                       href={item.href}
@@ -225,7 +232,11 @@ export function Navbar() {
                 className="flex flex-col gap-4"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.35 }}
+                transition={{ 
+                  duration: shouldReduceMotion ? 0 : DURATION.normal, 
+                  delay: shouldReduceMotion ? 0 : 0.35,
+                  ease: EASE_OUT_EXPO
+                }}
               >
                 {/* Language toggle */}
                 <button

@@ -1,13 +1,24 @@
 "use client";
 
-import { useLanguage } from "@/components/language-provider";
 import { BackgroundPaths } from "@/components/ui/background-paths";
-import { MetadataStrip } from "@/components/metadata-strip";
-import { ProjectsGallery } from "@/components/projects-gallery";
-import { Capabilities } from "@/components/capabilities";
-import { CtaSection } from "@/components/cta-section";
-import { Footer } from "@/components/footer";
 import { TranslatedText } from "@/components/translated-text";
+import dynamic from 'next/dynamic';
+
+const DynamicMetadataStrip = dynamic(() => import('@/components/metadata-strip').then(mod => mod.MetadataStrip), {
+    ssr: true
+});
+
+const DynamicProjectsGallery = dynamic(() => import('@/components/projects-gallery').then(mod => mod.ProjectsGallery), {
+    ssr: true
+});
+
+const DynamicCapabilities = dynamic(() => import('@/components/capabilities').then(mod => mod.Capabilities), {
+    ssr: true
+});
+
+const DynamicCtaSection = dynamic(() => import('@/components/cta-section').then(mod => mod.CtaSection), {
+    ssr: true
+});
 
 export default function Home() {
     return (
@@ -21,11 +32,10 @@ export default function Home() {
                 }
                 subtitle={<TranslatedText translationKey="heroDesc" />}
             />
-            <MetadataStrip />
-            <ProjectsGallery />
-            <Capabilities />
-            <CtaSection />
-            <Footer />
+            <DynamicMetadataStrip />
+            <DynamicProjectsGallery />
+            <DynamicCapabilities />
+            <DynamicCtaSection />
         </main>
     );
 }

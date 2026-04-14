@@ -1,0 +1,39 @@
+{
+  "session": {
+    "id": null,
+    "activeWorkflow": null,
+    "suspendedWorkflows": [],
+    "status": "IDLE",
+    "startTime": null,
+    "activePersona": null,
+    "currentStep": 0,
+    "activeWorkflowPhase": 0
+  },
+  "context": {},
+  "tasks": [],
+  "terminals": {},
+  "chatAgents": {},
+  "teams": {},
+  "startupCommands": {
+    "planner": "gemini --approval-mode auto_edit",
+    "lead": "copilot --allow-all-tools",
+    "coder": "gemini --approval-mode auto_edit",
+    "intern": "copilot --allow-all-tools",
+    "reviewer": "gemini --approval-mode auto_edit",
+    "analyst": "qwen"
+  },
+  "visibleAgents": {
+    "planner": true,
+    "lead": true,
+    "coder": true,
+    "intern": true,
+    "reviewer": true,
+    "analyst": true,
+    "jules": true
+  },
+  "customAgents": [],
+  "julesSessions": [],
+  "julesPollingDegraded": false,
+  "julesPollingLastCheckedAt": "2026-04-14T07:38:07.023Z",
+  "julesPollingDegradedAt": "2026-04-14T06:38:03.223Z"
+}

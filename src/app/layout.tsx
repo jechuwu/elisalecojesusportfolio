@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import dynamic from 'next/dynamic';
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { LenisProvider } from "@/components/lenis-provider";
@@ -8,12 +9,27 @@ import { LanguageProvider } from "@/components/language-provider";
 import { PageTransitionProvider } from "@/components/page-transition-provider";
 import { Navbar } from "@/components/navbar";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-poppins" });
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  preload: true
+});
+const poppins = Poppins({ 
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
+  display: "swap",
+  preload: true
+});
+
+const DynamicFooter = dynamic(() => import('@/components/footer').then(mod => mod.Footer), {
+  ssr: true
+});
 
 export const metadata: Metadata = {
   title: {
-    default: "JESUS ELISALECO | Industrial Design Portfolio",
+    default: "Jesus Elisaleco | Industrial Design Portfolio",
     template: "%s — Jesus Elisaleco",
   },
   description: "Portfolio de diseño industrial de alto impacto. Precisión técnica y estética emocional. Especializado en CMF, óptica e ingeniería de producto.",
@@ -90,6 +106,7 @@ export default function RootLayout({
               <LenisProvider>
                 <Navbar />
                 {children}
+                <DynamicFooter />
               </LenisProvider>
             </PageTransitionProvider>
           </LanguageProvider>

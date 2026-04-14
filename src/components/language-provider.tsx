@@ -129,11 +129,9 @@ export const translations = {
     }
 };
 
-type TranslationsType = typeof translations.es;
-
 interface LanguageContextType {
     lang: Language;
-    t: (key: keyof TranslationsType | string) => any;
+    t: (key: string) => string;
     toggleLanguage: () => void;
 }
 
@@ -143,9 +141,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const [lang, setLang] = useState<Language>('es');
 
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         const saved = localStorage.getItem('lang') as Language;
         if (saved && (saved === 'es' || saved === 'en')) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setLang(saved);
         }
     }, []);
@@ -158,8 +156,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         });
     };
 
-    const t = (key: string) => {
-        return (translations[lang] as any)[key] || key;
+    const t = (key: string): string => {
+        const transDict: Record<string, string | string[]> = translations[lang] as Record<string, string | string[]>;
+        const val = transDict[key];
+        if (Array.isArray(val)) return val.join(', ');
+        return typeof val === 'string' && val.length > 0 ? val : key;
     };
 
     return (

@@ -1,5 +1,4 @@
 import { TranslatedText } from "@/components/translated-text";
-import { Footer } from "@/components/footer";
 import Link from "next/link";
 import Image from "next/image";
 import { ScrollDownButton } from "@/components/scroll-down-button";
@@ -8,21 +7,40 @@ import { BackButton } from "@/components/back-button";
 import { TextEffect } from "@/components/ui/text-effect";
 import { type Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Lumix Pro X",
-    description: "Camera design case study focusing on optical engineering and premium CMF.",
-    openGraph: {
-        title: "Lumix Pro X — Jesus Elisaleco",
-        description: "Camera design case study focusing on optical engineering and premium CMF.",
-        images: [
-            {
-                url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAHNZPftCCF_h_NCNzJh75HCnxG_lz8HEygVl_BSe7c8BOqzt83bvnNEk_Q8h3Kq8Byj4kGsG3XhioHAzlWlWZvW5ztFzIuJOH_G3UHvy_ohVmp991R75ecADG5h0cPMBPGNqyn-QiDCHUr6MRHMGsL-PWaodl0C8ZsE6ruzx5JBk44kdF6n4zsq6xhsVuKi20GTT4D1W_a-AQFJ6uTx0DQx9X6hAhI8uYhbpwN2zF0L7XURRapC4klDNyQ-UZLrGX-fSUUdwNIYwI",
-                width: 1200,
-                height: 630,
-                alt: "Lumix Pro X"
-            }
-        ],
-        type: "article",
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+    const id = params.id;
+    try {
+        const { getProjectById } = await import('@/content');
+        const project = getProjectById(id);
+        if (!project) {
+            return {
+                title: 'Project — Portfolio',
+                description: 'Project could not be located in site content.',
+            };
+        }
+
+        const title = project.title ?? id;
+        const description = project.content?.en?.heroDescription ?? project.content?.es?.heroDescription ?? '';
+
+        const escapeHtml = (s: string) => s.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const safeTitle = escapeHtml(title);
+        const safeDescription = escapeHtml(description).slice(0, 160);
+
+        return {
+            title: `${safeTitle} — Portfolio`,
+            description: safeDescription || undefined,
+            openGraph: {
+                title: `${safeTitle} — Jesus Elisaleco`,
+                description: safeDescription || undefined,
+                images: project.image ? [{ url: project.image, width: 1200, height: 630, alt: safeTitle }] : undefined,
+                type: 'article',
+            },
+        };
+    } catch {
+        return {
+            title: 'Project — Portfolio',
+            description: 'Explore my projects and case studies.',
+        };
     }
 }
 
@@ -204,7 +222,6 @@ export default function LumixProjectPage() {
                 </div>
             </Link>
 
-            <Footer />
         </main>
     );
 }

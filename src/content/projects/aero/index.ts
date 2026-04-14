@@ -17,6 +17,7 @@ export const aero: ProjectData = {
             client: 'Por definir',
             role: 'Diseñador Industrial',
             discipline: 'Mobiliario & Ergonomía',
+            sections: [],
         },
         en: {
             category: 'Signature Furniture',
@@ -24,6 +25,7 @@ export const aero: ProjectData = {
             client: 'TBD',
             role: 'Industrial Designer',
             discipline: 'Furniture & Ergonomics',
+            sections: [],
         }
     }
 }

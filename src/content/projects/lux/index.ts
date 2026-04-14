@@ -17,6 +17,7 @@ export const lux: ProjectData = {
             client: 'Por definir',
             role: 'Diseñador Industrial',
             discipline: 'Iluminación & CMF',
+            sections: [],
         },
         en: {
             category: 'Lighting Systems',
@@ -24,6 +25,7 @@ export const lux: ProjectData = {
             client: 'TBD',
             role: 'Industrial Designer',
             discipline: 'Lighting & CMF',
+            sections: [],
         }
     }
 }

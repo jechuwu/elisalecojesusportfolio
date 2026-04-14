@@ -17,6 +17,7 @@ export const aural: ProjectData = {
             client: 'Por definir',
             role: 'Diseñador Industrial',
             discipline: 'Acústica & Ergonomía',
+            sections: [],
         },
         en: {
             category: 'Acoustic Ergonomics',
@@ -24,6 +25,7 @@ export const aural: ProjectData = {
             client: 'TBD',
             role: 'Industrial Designer',
             discipline: 'Acoustics & Ergonomics',
+            sections: [],
         }
     }
 }

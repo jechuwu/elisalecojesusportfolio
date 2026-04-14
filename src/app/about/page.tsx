@@ -1,6 +1,9 @@
 import { TranslatedText } from "@/components/translated-text";
-import { CtaSection } from "@/components/cta-section";
-import { Footer } from "@/components/footer";
+import dynamic from 'next/dynamic';
+
+const DynamicCtaSection = dynamic(() => import('@/components/cta-section').then(mod => mod.CtaSection), {
+    ssr: true
+});
 
 export default function AboutPage() {
     return (
@@ -23,8 +26,7 @@ export default function AboutPage() {
                     />
                 </div>
             </section>
-            <CtaSection />
-            <Footer />
+            <DynamicCtaSection />
         </main>
     );
 }

@@ -57,7 +57,7 @@ export function BackgroundPaths({
     subtitle?: React.ReactNode;
 }) {
     return (
-        <div className="relative z-20 min-h-[80vh] w-full flex items-center justify-center overflow-hidden bg-white dark:bg-[#121212] transition-colors duration-700 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.7)] border-b border-black/5 dark:border-white/5">
+        <div className="relative z-20 min-h-[80vh] w-full flex items-center justify-center overflow-hidden bg-white dark:bg-[#121212] transition-colors duration-700 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.7)]">
             <motion.div 
                 className="absolute inset-0"
                 initial={{ opacity: 0 }}

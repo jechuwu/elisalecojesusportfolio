@@ -1,26 +1,29 @@
 "use client"
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import { TranslatedText } from "./translated-text"
+import { EASE_OUT_EXPO, VIEWPORT_ONCE } from "@/lib/animations"
 
 export function CtaSection() {
+    const shouldReduceMotion = useReducedMotion()
+
     return (
         <section className="py-24 md:py-40 bg-[#f5f5f0] dark:bg-[#0a0a0a] text-[#1b1c1b] dark:text-white transition-colors duration-500" id="contact">
             <div className="max-w-[1600px] mx-auto px-6 md:px-16 text-center">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    viewport={VIEWPORT_ONCE}
+                    transition={{ duration: shouldReduceMotion ? 0 : 0.8, ease: EASE_OUT_EXPO }}
                 >
                     <TranslatedText as="h2" translationKey="ctaTitle" className="font-headline text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-12 md:mb-16 leading-[1.1]" />
                 </motion.div>
                 
                 <motion.div
                     className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16"
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.7, delay: 0.2 }}
+                    viewport={VIEWPORT_ONCE}
+                    transition={{ duration: shouldReduceMotion ? 0 : 0.7, delay: shouldReduceMotion ? 0 : 0.2, ease: EASE_OUT_EXPO }}
                 >
                     <a className="font-headline text-xl sm:text-2xl md:text-3xl font-bold hover:text-[#FF4F00] transition-colors border-b-2 border-[#FF4F00]/30 pb-1 break-all sm:break-normal" href="mailto:hola@jesuselisaleco.com">
                         hola@jesuselisaleco.com

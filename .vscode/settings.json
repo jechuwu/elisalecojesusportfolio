@@ -2,5 +2,27 @@
   "css.customData": [],
   "css.validate": false,
   "scss.validate": false,
-  "less.validate": false
+  "less.validate": false,
+  "switchboard.team.strictPrompts": false,
+  "switchboard.planner.strictPrompts": false,
+  "switchboard.review.strictPrompts": false,
+  "mcpServers": {
+    "switchboard": {
+      "command": "node",
+      "args": [
+        "/Users/jesuselisaleco/Desktop/Mi portfolio/.switchboard/MCP/mcp-server.js"
+      ],
+      "env": {
+        "SWITCHBOARD_WORKSPACE_ROOT": "/Users/jesuselisaleco/Desktop/Mi portfolio"
+      },
+      "disabled": false,
+      "alwaysAllow": []
+    }
+  },
+  "switchboard.accurateCoding.enabled": true,
+  "switchboard.reviewer.advancedMode": false,
+  "switchboard.leadCoder.inlineChallenge": false,
+  "switchboard.jules.autoSync": false,
+  "switchboard.pairProgramming.aggressive": false,
+  "switchboard.planner.designDocEnabled": false
 }

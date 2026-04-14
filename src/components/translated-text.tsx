@@ -68,7 +68,7 @@ export function TranslatedText({ translationKey, className = "", as: Component =
     if (hasHtml) {
         // Safe cast to motion element
         const tag = (Component as string) || "span"
-        const MotionTag = (motion as any)[tag]
+        const MotionTag = (motion as unknown as Record<string, React.ElementType>)[tag] || motion.span
         
         return (
             <MotionTag 
@@ -84,10 +84,12 @@ export function TranslatedText({ translationKey, className = "", as: Component =
     }
 
     // For plain strings, we use the requested TextEffect with a staggered configuration set to 0 (simultaneous changes)
+    const validAs = (typeof Component === 'string' ? Component : 'p') as keyof React.JSX.IntrinsicElements;
+
     return (
         <TextEffect 
             key={`${translationKey}-${lang}`}
-            as={Component as any}
+            as={validAs}
             className={className}
             per="line"
             preset="blur"

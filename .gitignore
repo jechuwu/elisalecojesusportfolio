@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Switchboard kanban database — machine-local, do not commit.
+.switchboard/kanban.db
+.switchboard/*.db-shm
+.switchboard/*.db-wal
+
+# Deprecated code
+/src/_deprecated/

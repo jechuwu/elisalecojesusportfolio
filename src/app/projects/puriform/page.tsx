@@ -1,7 +1,44 @@
 import { TranslatedText } from "@/components/translated-text";
-import { Footer } from "@/components/footer";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+    const id = params.id;
+    try {
+        const { getProjectById } = await import('@/content');
+        const project = getProjectById(id);
+        if (!project) {
+            return {
+                title: 'Project — Portfolio',
+                description: 'Project could not be located in site content.',
+            };
+        }
+
+        const title = project.title ?? id;
+        const description = project.content?.en?.heroDescription ?? project.content?.es?.heroDescription ?? '';
+
+        const escapeHtml = (s: string) => s.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const safeTitle = escapeHtml(title);
+        const safeDescription = escapeHtml(description).slice(0, 160);
+
+        return {
+            title: `${safeTitle} — Portfolio`,
+            description: safeDescription || undefined,
+            openGraph: {
+                title: `${safeTitle} — Jesus Elisaleco`,
+                description: safeDescription || undefined,
+                images: project.image ? [{ url: project.image, width: 1200, height: 630, alt: safeTitle }] : undefined,
+                type: 'article',
+            },
+        };
+    } catch {
+        return {
+            title: 'Project — Portfolio',
+            description: 'Explore my projects and case studies.',
+        };
+    }
+}
 
 export default function PuriformProjectPage() {
     return (
@@ -14,6 +51,7 @@ export default function PuriformProjectPage() {
                     alt="PuriForm Camera Hero"
                     fill
                     priority
+                    sizes="100vw"
                     className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -80,10 +118,10 @@ export default function PuriformProjectPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="aspect-square bg-black overflow-hidden group relative">
-                            <Image src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop" fill className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-1000 scale-105 group-hover:scale-100 transition-transform" alt="Desk with sketches" />
+                            <Image src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-1000 scale-105 group-hover:scale-100 transition-transform" alt="Desk with sketches" />
                         </div>
                         <div className="aspect-square bg-black overflow-hidden group relative">
-                            <Image src="https://images.unsplash.com/photo-1517409217036-7c6de425dd9f?q=80&w=1600&auto=format&fit=crop" fill className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-1000 scale-105 group-hover:scale-100 transition-transform" alt="Engineering planning" />
+                            <Image src="https://images.unsplash.com/photo-1517409217036-7c6de425dd9f?q=80&w=1600&auto=format&fit=crop" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-1000 scale-105 group-hover:scale-100 transition-transform" alt="Engineering planning" />
                         </div>
                     </div>
                 </div>
@@ -94,7 +132,7 @@ export default function PuriformProjectPage() {
                 <div className="max-w-[1600px] mx-auto px-6 md:px-16">
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
                         <div className="md:col-span-6 bg-[#f5f5f7] dark:bg-[#222] aspect-[4/5] overflow-hidden relative">
-                            <Image src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/8629d9213297753.6744564302047.png" fill className="object-cover" alt="CMF Details" />
+                            <Image src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/8629d9213297753.6744564302047.png" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" alt="CMF Details" />
                         </div>
                         <div className="md:col-span-6 md:pl-8">
                             <TranslatedText translationKey="cmfTag" className="font-body text-[10px] tracking-[0.3em] uppercase text-[#FF4F00] mb-4 block font-bold" />
@@ -121,7 +159,6 @@ export default function PuriformProjectPage() {
                 </div>
             </Link>
 
-            <Footer />
         </main>
     );
 }
