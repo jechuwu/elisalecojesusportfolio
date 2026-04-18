@@ -7,8 +7,7 @@ import { ScrollReveal } from '@/components/scroll-reveal';
 import { ScrollDownButton } from '@/components/scroll-down-button';
 import Image from 'next/image';
 
-// Simple sanitizer to avoid dependencies
-const escape = (str: string) => str
+const escapeHtml = (str: string) => str
   .replace(/&/g, '&amp;')
   .replace(/</g, '&lt;')
   .replace(/>/g, '&gt;')
@@ -36,13 +35,13 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     };
   }
 
-  // Use 'en' as default for metadata or handle based on some logic
+  // Use 'en' as default for metadata crawler visibility
   const content = project.content.en;
   const title = project.title;
   const description = content.heroDescription;
 
-  const safeTitle = escape(title);
-  const safeDescription = escape(description).slice(0, 160);
+  const safeTitle = escapeHtml(title);
+  const safeDescription = escapeHtml(description).slice(0, 160);
 
   return {
     title: `${safeTitle} — Jesus Elisaleco`,
@@ -50,7 +49,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     openGraph: {
       title: `${safeTitle} — Jesus Elisaleco Portfolio`,
       description: safeDescription,
-      images: [{ url: project.image }],
+      images: project.image ? [{ url: project.image, width: 1200, height: 630, alt: safeTitle }] : undefined,
       type: 'article',
     },
   };
@@ -64,10 +63,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  // Safely fallback to spanish sections if english is missing
+  const activeSections = project.content.en.sections.length > 0 
+    ? project.content.en.sections 
+    : project.content.es.sections;
+
   return (
     <main className="min-h-screen flex flex-col bg-white dark:bg-[#121212] transition-colors duration-500">
       <BackButton />
-      
+
       {/* Hero Section */}
       <section className="relative w-full h-[100vh] flex flex-col items-center justify-center overflow-hidden">
         <Image 
@@ -79,7 +83,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-        
         <div className="absolute inset-0 flex flex-col justify-end pb-28 md:pb-32">
           <div className="max-w-[1600px] mx-auto px-6 md:px-16 w-full text-center md:text-left text-white">
             <ScrollReveal delay={0.6}>
@@ -106,7 +109,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </section>
 
       {/* Sections rendering */}
-      {project.content.en.sections.map((section, idx) => (
+      {activeSections.map((section, idx) => (
         <section key={idx} className="py-32 bg-white dark:bg-[#121212] transition-colors duration-500 border-t border-black/5 dark:border-white/5">
           <div className="max-w-[1600px] mx-auto px-6 md:px-16">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-16">

@@ -4,27 +4,27 @@ export const puriform: ProjectData = {
     id: 'puriform',
     title: 'PuriForm',
     shortName: 'Puri',
-    tags: ['relojeria', 'cmf', 'producto'],
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400/38de92213297753.67439bf6e51c8.jpg',
+    tags: ['producto', 'cmf', 'ergonomia'],
+    image: '/images/projects/puriform/hero-shot.png',
     link: '/projects/puriform',
-    year: '2022',
+    year: '2024',
     order: 2,
     status: 'published',
     content: {
         es: {
-            category: 'Relojería Avanzada',
-            heroDescription: 'Estudio de formas puras y materiales translúcidos aplicados al diseño de alta relojería.',
-            client: 'Estudio Interno',
+            category: 'Diseño de Producto',
+            heroDescription: 'Un purificador de agua diseñado para elevar la experiencia diaria en el hogar.',
+            client: 'FADU, UBA.',
             role: 'Diseñador Industrial',
-            discipline: 'Diseño de Producto & CMF',
+            discipline: 'Desarrollo de producto\nElectrodomésticos',
             sections: []
         },
         en: {
-            category: 'Advanced Horology',
-            heroDescription: 'Study of pure forms and translucent materials applied to high-end watchmaking design.',
-            client: 'Internal Studio',
+            category: 'Product Design',
+            heroDescription: 'A water purifier designed to elevate the daily home experience.',
+            client: 'FADU, UBA.',
             role: 'Industrial Designer',
-            discipline: 'Product Design & CMF',
+            discipline: 'Product Development\nHome Appliances',
             sections: []
         }
     }

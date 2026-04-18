@@ -4,18 +4,15 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { useLanguage } from "./language-provider"
 import Link from "next/link"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 import { TranslatedText } from "./translated-text"
 import { usePageTransition } from "./page-transition-provider"
 import { allProjects, tagLabels } from "@/content"
 import type { ProjectData } from "@/content/projects/_schema"
-import { EASE_OUT_EXPO } from "@/lib/animations"
 
 const allTags = Object.keys(tagLabels)
 
-export function ProjectsGallery() {
+export function ProjectsGallery({ expandedMode = false }: { expandedMode?: boolean }) {
     const { lang } = useLanguage()
-    const router = useRouter()
     const [activeId, setActiveId] = useState('lumix')
     const [activeTag, setActiveTag] = useState<string | null>(null)
     const [tagsOpen, setTagsOpen] = useState(false)
@@ -53,7 +50,7 @@ export function ProjectsGallery() {
     }, [triggerTransition])
 
     return (
-        <section className="py-16 md:py-24 bg-white dark:bg-[#121212] transition-colors duration-500" id="projects">
+        <section className={`${expandedMode ? 'py-8 md:py-12' : 'py-16 md:py-24'} bg-white dark:bg-[#121212] transition-colors duration-500`} id="projects">
             <div className="max-w-[1600px] mx-auto px-6 md:px-16">
                 <motion.div
                     className="flex flex-col md:flex-row justify-between items-baseline mb-12 md:mb-16 gap-4"
@@ -103,7 +100,7 @@ export function ProjectsGallery() {
                 </motion.div>
 
                 {/* Desktop: horizontal accordion */}
-                <div className="hidden md:flex gap-4 h-[600px] w-full">
+                <div className={`hidden md:flex gap-4 ${expandedMode ? 'h-[700px]' : 'h-[600px]'} w-full`}>
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project, index) => {
                             const isActive = activeId === project.id;

@@ -58,6 +58,7 @@ export function Navbar() {
 
   const isActive = (path: string) => {
     if (pathname === '/about' && path === '/about') return true;
+    if (pathname === '/projects' && path === '/projects') return true;
     if (path.startsWith('/#')) {
       return activeHash === path.replace('/', '');
     }
@@ -87,7 +88,7 @@ export function Navbar() {
 
           {/* Desktop nav links */}
           <div className="z-10 hidden md:flex items-center gap-3 md:gap-8 whitespace-nowrap">
-            <Link href="/#projects" className={`nav-link font-headline font-semibold text-[11px] md:text-[13px] tracking-tight transition-colors ${isActive('/#projects') ? 'text-[#FF4F00]' : 'text-[#1b1c1b] dark:text-white opacity-60 hover:opacity-100'}`}>
+            <Link href="/projects" className={`nav-link font-headline font-semibold text-[11px] md:text-[13px] tracking-tight transition-colors ${isActive('/projects') ? 'text-[#FF4F00]' : 'text-[#1b1c1b] dark:text-white opacity-60 hover:opacity-100'}`}>
               <TranslatedText translationKey="projects" />
             </Link>
             <Link href="/#services" className={`nav-link font-headline font-semibold text-[11px] md:text-[13px] tracking-tight transition-colors ${isActive('/#services') ? 'text-[#FF4F00]' : 'text-[#1b1c1b] dark:text-white opacity-60 hover:opacity-100'}`}>
@@ -194,7 +195,7 @@ export function Navbar() {
               {/* Nav links */}
               <div className="flex flex-col gap-2 mb-8">
                 {[
-                  { href: '/#projects', key: 'projects' },
+                  { href: '/projects', key: 'projects' },
                   { href: '/#services', key: 'services' },
                   { href: '/about', key: 'about' },
                   { href: '/#contact', key: 'contact' },
